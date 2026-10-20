@@ -1,0 +1,20 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "stat": "variable_decl",
+            "name": "cflags",
+            "value": "-O2 -Wall"
+        },
+        {
+            "stat": "variable_decl",
+            "name": "ldflags",
+            "value": "$cflags -lm"
+        },
+        {
+            "stat": "variable_decl",
+            "name": "padded",
+            "value": "   three leading spaces"
+        }
+    ]
+}

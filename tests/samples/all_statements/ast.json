@@ -1,0 +1,79 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "stat": "include",
+            "file": "toolchain.ninja"
+        },
+        {
+            "stat": "variable_decl",
+            "name": "cflags",
+            "value": "-O2 -Wall"
+        },
+        {
+            "stat": "pool",
+            "name": "link_pool",
+            "depth": 4
+        },
+        {
+            "stat": "rule",
+            "name": "cc",
+            "variables": {
+                "command": "gcc $cflags -c $in -o $out",
+                "description": "CC $out"
+            }
+        },
+        {
+            "stat": "rule",
+            "name": "link",
+            "variables": {
+                "command": "gcc $in -o $out",
+                "pool": "link_pool"
+            }
+        },
+        {
+            "stat": "build",
+            "outputs": [
+                "build/main.o"
+            ],
+            "rule": "cc",
+            "dependencies": [
+                "src/main.c"
+            ]
+        },
+        {
+            "stat": "build",
+            "outputs": [
+                "build/util.o"
+            ],
+            "rule": "cc",
+            "dependencies": [
+                "src/util.c"
+            ],
+            "variables": {
+                "cflags": "-O0 -g"
+            }
+        },
+        {
+            "stat": "build",
+            "outputs": [
+                "build/app"
+            ],
+            "rule": "link",
+            "dependencies": [
+                "build/main.o",
+                "build/util.o"
+            ]
+        },
+        {
+            "stat": "subninja",
+            "file": "libs/zlib/build.ninja"
+        },
+        {
+            "stat": "default_target",
+            "targets": [
+                "build/app"
+            ]
+        }
+    ]
+}

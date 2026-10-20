@@ -1,0 +1,17 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "stat": "subninja",
+            "file": "libs/zlib/build.ninja"
+        },
+        {
+            "stat": "subninja",
+            "file": "libs/my lib/build.ninja"
+        },
+        {
+            "stat": "subninja",
+            "file": "C:/deps/$vendor/build.ninja"
+        }
+    ]
+}

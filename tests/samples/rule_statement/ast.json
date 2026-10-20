@@ -1,0 +1,13 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "variables": {
+                "command": "meow",
+                "var": "foo"
+            },
+            "stat": "rule",
+            "name": "ident"
+        }
+    ]
+}

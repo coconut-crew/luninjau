@@ -1,0 +1,6 @@
+ninja_required_version = 1.11
+
+build out1 out2 | imout1 imout2: ident in1 in2 | imin1 imin2 || ronin1 |@ $
+    val1
+  var1 = ident
+

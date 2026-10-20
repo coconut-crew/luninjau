@@ -1,0 +1,5 @@
+ninja_required_version = 1.11
+
+include rules.ninja
+include toolchains/gcc$ 13.ninja
+include C$:/sdk/toolchain.ninja

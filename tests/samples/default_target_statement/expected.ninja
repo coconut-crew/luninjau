@@ -1,0 +1,6 @@
+ninja_required_version = 1.11
+
+default all my$ app.exe C$:/out/lib.a cost$$
+default build/src/parser/lexer.o build/src/parser/parser.o $
+    build/src/codegen/emitter.o build/src/codegen/optimizer.o $
+    build/bin/compiler

@@ -1,0 +1,17 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "stat": "include",
+            "file": "rules.ninja"
+        },
+        {
+            "stat": "include",
+            "file": "toolchains/gcc 13.ninja"
+        },
+        {
+            "stat": "include",
+            "file": "C:/sdk/toolchain.ninja"
+        }
+    ]
+}

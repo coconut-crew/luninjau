@@ -1,0 +1,5 @@
+ninja_required_version = 1.11
+
+subninja libs/zlib/build.ninja
+subninja libs/my$ lib/build.ninja
+subninja C$:/deps/$$vendor/build.ninja

@@ -1,0 +1,5 @@
+ninja_required_version = 1.11
+
+cflags = -O2 -Wall
+ldflags = $cflags -lm
+padded = $ $ $ three leading spaces

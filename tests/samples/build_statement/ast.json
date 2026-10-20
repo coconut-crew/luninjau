@@ -1,0 +1,34 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "implicit_dependencies": [
+                "imin1",
+                "imin2"
+            ],
+            "validations": [
+                "val1"
+            ],
+            "variables": {
+                "var1": "ident"
+            },
+            "implicit_outputs": [
+                "imout1",
+                "imout2"
+            ],
+            "order_only_dependencies": [
+                "ronin1"
+            ],
+            "dependencies": [
+                "in1",
+                "in2"
+            ],
+            "rule": "ident",
+            "stat": "build",
+            "outputs": [
+                "out1",
+                "out2"
+            ]
+        }
+    ]
+}

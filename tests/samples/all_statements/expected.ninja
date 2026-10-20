@@ -1,0 +1,24 @@
+ninja_required_version = 1.11
+
+include toolchain.ninja
+cflags = -O2 -Wall
+pool link_pool
+  depth = 4
+
+rule cc
+  command = gcc $cflags -c $in -o $out
+  description = CC $out
+
+rule link
+  command = gcc $in -o $out
+  pool = link_pool
+
+build build/main.o: cc src/main.c
+
+build build/util.o: cc src/util.c
+  cflags = -O0 -g
+
+build build/app: link build/main.o build/util.o
+
+subninja libs/zlib/build.ninja
+default build/app

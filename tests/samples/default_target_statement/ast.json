@@ -1,0 +1,24 @@
+{
+    "version": "1.11",
+    "stmts": [
+        {
+            "stat": "default_target",
+            "targets": [
+                "all",
+                "my app.exe",
+                "C:/out/lib.a",
+                "cost$"
+            ]
+        },
+        {
+            "stat": "default_target",
+            "targets": [
+                "build/src/parser/lexer.o",
+                "build/src/parser/parser.o",
+                "build/src/codegen/emitter.o",
+                "build/src/codegen/optimizer.o",
+                "build/bin/compiler"
+            ]
+        }
+    ]
+}

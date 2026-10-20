@@ -1,0 +1,6 @@
+ninja_required_version = 1.11
+
+rule ident
+  command = meow
+  var = foo
+
