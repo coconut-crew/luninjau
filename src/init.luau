@@ -65,8 +65,6 @@ export type NinjaStat =
 export type NinjaStaticFile = { version: string?, stmts: { NinjaStat } }
 export type NinjaDyndepFile = { version: string, stmts: { NinjaStatBuild } }
 
-const line_width = 78
-
 const ninja = {}
 
 function ninja.escape(input: string): string
@@ -99,26 +97,6 @@ const function append_paths(tokens: { string }, paths: { string })
 	end
 end
 
-const function wrap(tokens: { string }): string
-	const lines = {}
-	local line = tokens[1]
-
-	for index = 2, #tokens do
-		const token = tokens[index]
-
-		if #line + 1 + #token + 2 > line_width then
-			table.insert(lines, line .. " $")
-			line = "    " .. token
-		else
-			line ..= " " .. token
-		end
-	end
-
-	table.insert(lines, line)
-
-	return table.concat(lines, "\n") .. "\n"
-end
-
 function ninja.print_rule(stat: NinjaStatRule): string
 	const str_array = {
 		`rule {stat.name}\n`,
@@ -139,7 +117,7 @@ function ninja.print_default_target(stat: NinjaStatDefaultTarget): string
 	const tokens = { "default" }
 	append_paths(tokens, stat.targets)
 
-	return wrap(tokens)
+	return table.concat(tokens, " ") .. "\n"
 end
 
 function ninja.print_include(stat: NinjaStatInclude): string
@@ -151,9 +129,7 @@ function ninja.print_subninja(stat: NinjaStatSubninja): string
 end
 
 function ninja.print_build(stat: NinjaStatBuild): string
-	if #stat.outputs == 0 then
-		error("ninja: build statement needs at least one output")
-	end
+	assert(#stat.outputs ~= 0, "build statements need at least one output")
 
 	const tokens = { "build" }
 
@@ -164,6 +140,7 @@ function ninja.print_build(stat: NinjaStatBuild): string
 		append_paths(tokens, stat.implicit_outputs)
 	end
 
+	-- :(
 	tokens[#tokens] ..= ":"
 	table.insert(tokens, stat.rule)
 
@@ -184,7 +161,7 @@ function ninja.print_build(stat: NinjaStatBuild): string
 		append_paths(tokens, stat.validations)
 	end
 
-	const str_array = { wrap(tokens) }
+	const str_array = { table.concat(tokens, " ") .. "\n" }
 
 	if stat.variables then
 		print_variables(str_array, stat.variables)
